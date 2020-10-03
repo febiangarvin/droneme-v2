@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-// // ----- FUNCTION CALL FROM CONTROLLERS FOLDER ----- // //
+// ----- FUNCTION CALL FROM CONTROLLERS FOLDER ----- //
 const { requireSignin, isAuth, isAdmin } = require('../controllers/auth');
 const { userById, read, update, purchaseHistory } = require('../controllers/user');
 
-// // ----- ROUTER FUNCTIONS ----- // //
+// ----- ROUTER FUNCTIONS ----- //
 router.get('/secret', requireSignin, (req, res) => {
     res.json({
         user: 'droneme'

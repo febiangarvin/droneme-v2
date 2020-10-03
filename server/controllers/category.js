@@ -2,7 +2,7 @@ const Category = require('../models/category');
 const Product = require('../models/product');
 const { errorHandler } = require('../helpers/dbErrorHandler');
 
-// // ----- SEARCH CATEGORY ----- // //
+// ----- SEARCH CATEGORY ----- //
 exports.categoryById = (req, res, next, id) => {
     Category.findById(id).exec((err, category) => {
         /**
@@ -18,7 +18,7 @@ exports.categoryById = (req, res, next, id) => {
     });
 };
 
-// // ----- CREATE CATEGORY ----- // //
+// ----- CREATE CATEGORY ----- //
 exports.create = (req, res) => {
     /**
      * membuat category baru berdasarkan dari form pada interface
@@ -34,12 +34,12 @@ exports.create = (req, res) => {
     });
 };
 
-// // ----- READ CATEGORY ----- // //
+// ----- READ CATEGORY ----- //
 exports.read = (req, res) => {
     return res.json(req.category);
 };
 
-// // ----- UPDATE CATEGORY ----- // //
+// ----- UPDATE CATEGORY ----- //
 exports.update = (req, res) => {
     console.log('req.body', req.body);
     console.log('category update param', req.params.categoryId);
@@ -60,7 +60,7 @@ exports.update = (req, res) => {
     });
 };
 
-// // ----- DELETE CATEGORY ----- // //
+// ----- DELETE CATEGORY ----- //
 exports.remove = (req, res) => {
     const category = req.category;
     Product.find({ category }).exec((err, data) => {
@@ -87,7 +87,7 @@ exports.remove = (req, res) => {
     });
 };
 
-// // ----- CATEGORY LISTS ----- // //
+// ----- CATEGORY LISTS ----- //
 exports.list = (req, res) => {
     Category.find().exec((err, data) => {
         if (err) {

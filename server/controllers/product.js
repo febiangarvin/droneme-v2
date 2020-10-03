@@ -4,7 +4,7 @@ const fs = require('fs');
 const Product = require('../models/product');
 const { errorHandler } = require('../helpers/dbErrorHandler');
 
-// // ----- SEARCH PRODUCT BY ID ----- // //
+// ----- SEARCH PRODUCT BY ID ----- //
 exports.productById = (req, res, next, id) => {
     Product.findById(id)
         .populate('category')
@@ -19,13 +19,13 @@ exports.productById = (req, res, next, id) => {
         });
 };
 
-// // ----- READ PRODUCT ----- // //
+// ----- READ PRODUCT ----- //
 exports.read = (req, res) => {
     req.product.photo = undefined;
     return res.json(req.product);
 };
 
-// // ----- CREATE PRODUCT ----- // //
+// ----- CREATE PRODUCT ----- //
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -39,8 +39,8 @@ exports.create = (req, res) => {
         /**
          * membuat syarat agar semua field terisi
          */
-        const { name, description, price, category, quantity, shipping } = fields;
-        if (!name || !description || !price || !category || !quantity || !shipping) {
+        const { name, brand, yearedition, description, price, category, quantity, preorder } = fields;
+        if (!name || !brand || !yearedition || !description || !price || !category || !quantity || !preorder) {
             return res.status(400).json({
                 error: 'All fields are required'
             });
@@ -73,7 +73,7 @@ exports.create = (req, res) => {
     });
 };
 
-// // ----- REMOVE PRODUCT ----- // //
+// ----- REMOVE PRODUCT ----- //
 exports.remove = (req, res) => {
     let product = req.product;
     product.remove((err, deletedProduct) => {
@@ -88,7 +88,7 @@ exports.remove = (req, res) => {
     });
 };
 
-// // ----- UPDATE PRODUCT ----- // //
+// ----- UPDATE PRODUCT ----- //
 exports.update = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -124,7 +124,7 @@ exports.update = (req, res) => {
     });
 };
 
-// // ----- PRODUCT LISTS ----- // //
+// ----- PRODUCT LISTS ----- //
 /**
  * sell / arrival
  * by sell = /products?sortBy=sold&order=desc&limit=4
@@ -157,7 +157,7 @@ exports.list = (req, res) => {
         });
 };
 
-// // ----- PRODUCT RELATED LISTS ----- // //
+// ----- PRODUCT RELATED LISTS ----- //
 /**
  * it will find the products based on the req product category
  * other products that has the same category, will be returned
@@ -178,7 +178,7 @@ exports.listRelated = (req, res) => {
         });
 };
 
-// // ----- PRODUCT LISTS BY CATEGORIES----- // //
+// ----- PRODUCT LISTS BY CATEGORIES----- //
 exports.listCategories = (req, res) => {
     Product.distinct('category', {}, (err, categories) => {
         if (err) {
@@ -190,7 +190,7 @@ exports.listCategories = (req, res) => {
     });
 };
 
-// // ----- PRODUCT LISTS BY SEARCH ----- // //
+// ----- PRODUCT LISTS BY SEARCH ----- //
 /**
  * list products by search
  * we will implement product search in react frontend
@@ -242,7 +242,7 @@ exports.listBySearch = (req, res) => {
         });
 };
 
-// // ----- PRODUCT PHOTO ----- // //
+// ----- PRODUCT PHOTO ----- //
 exports.photo = (req, res, next) => {
     if (req.product.photo.data) {
         res.set('Content-Type', req.product.photo.contentType);
@@ -251,7 +251,7 @@ exports.photo = (req, res, next) => {
     next();
 };
 
-// // ----- PRODUCT SEARCH LIST ----- // //
+// ----- PRODUCT SEARCH LIST ----- //
 exports.listSearch = (req, res) => {
     /**
      * create query object to hold search value and category value
@@ -283,7 +283,7 @@ exports.listSearch = (req, res) => {
     }
 };
 
-// // ----- PRODUCT DECREASING QUANTITY AFTER SALES ----- // //
+// ----- PRODUCT DECREASING QUANTITY AFTER SALES ----- //
 exports.decreaseQuantity = (req, res, next) => {
     let bulkOps = req.body.order.products.map(item => {
         return {

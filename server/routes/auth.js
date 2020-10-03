@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// // ----- FUNCTION CALL FROM CONTROLLERS FOLDER ----- // //
+// ----- FUNCTION CALL FROM CONTROLLERS FOLDER ----- //
 /*
 - routes berguna untuk menyambungkan antar function pada controller dengan server.js
 - agar code lebih pendek
@@ -14,7 +14,7 @@ const {
 } = require("../controllers/auth");
 const { userSignupValidator } = require("../helpers/validator");
 
-// // ----- ROUTER FUNCTIONS ----- // //
+// ----- ROUTER FUNCTIONS ----- //
 /*
 - get = read
 - post = menambah

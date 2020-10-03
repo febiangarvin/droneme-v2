@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
 const { errorHandler } = require('../helpers/dbErrorHandler');
 
-// // ----- SIGNUP USING PROMISE ----- // //
+// ----- SIGNUP USING PROMISE ----- //
 exports.signup = (req, res) => {
     /*
      - membuat user baru dari body / form pada interface
@@ -13,11 +13,11 @@ exports.signup = (req, res) => {
         /*
          - jika terjadi error (email yang ganda)
         */
-        if (err) {
-            return res.status(400).json({
-                error: 'Email is taken'
-            });
-        }
+       if (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
         /*
          - akan membuat sebuah password dengan sebuah tulisan random di database
         */
@@ -29,7 +29,7 @@ exports.signup = (req, res) => {
     });
 };
 
-// // ----- SIGNUP USING ASYNC/AWAIT ----- // //
+// ----- SIGNUP USING ASYNC/AWAIT ----- //
 // exports.signup = async (req, res) => {
 //     try {
 //         const user = await new User(req.body);
@@ -48,7 +48,7 @@ exports.signup = (req, res) => {
 //     }
 // };
 
-// // ----- SIGNIN ----- // //
+// ----- SIGNIN ----- //
 exports.signin = (req, res) => {
     /*
      - find the user based on email
@@ -85,7 +85,7 @@ exports.signin = (req, res) => {
     });
 };
 
-// // ----- SIGNOUT ----- // //
+// ----- SIGNOUT ----- //
 exports.signout = (req, res) => {
     /*
      - menhapus cookie user tersebut
@@ -94,13 +94,15 @@ exports.signout = (req, res) => {
     res.json({ message: 'Signout success' });
 };
 
-// // ----- SIGNIN REQUIREMENT ----- // //
+// ----- SIGNIN REQUIREMENT ----- //
 exports.requireSignin = expressJwt({
     secret: process.env.JWT_SECRET,
-    userProperty: 'auth'
+    // algorithms: ['RS256'],
+    algorithms: ['HS256'],
+    userProperty: "auth"
 });
 
-// // ----- AUTHENTICATION ----- // //
+// ----- AUTHENTICATION ----- //
 exports.isAuth = (req, res, next) => {
     let user = req.profile && req.auth && req.profile._id == req.auth._id;
     if (!user) {
@@ -111,7 +113,7 @@ exports.isAuth = (req, res, next) => {
     next();
 };
 
-// // ----- ADMIN ACCESS ----- // //
+// ----- ADMIN ACCESS ----- //
 exports.isAdmin = (req, res, next) => {
     if (req.profile.role === 0) {
         return res.status(403).json({

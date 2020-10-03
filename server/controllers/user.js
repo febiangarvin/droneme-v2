@@ -2,6 +2,7 @@ const User = require('../models/user');
 const { Order } = require('../models/order');
 const { errorHandler } = require('../helpers/dbErrorHandler');
 
+// ----- USER SERACH BY ID ----- //
 exports.userById = (req, res, next, id) => {
     User.findById(id).exec((err, user) => {
         if (err || !user) {
@@ -14,52 +15,50 @@ exports.userById = (req, res, next, id) => {
     });
 };
 
+// ----- READ USERS ----- //
 exports.read = (req, res) => {
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
     return res.json(req.profile);
 };
 
-// exports.update = (req, res) => {
-//     console.log('user update', req.body);
-//     req.body.role = 0; // role will always be 0
-//     User.findOneAndUpdate({ _id: req.profile._id }, { $set: req.body }, { new: true }, (err, user) => {
-//         if (err) {
-//             return res.status(400).json({
-//                 error: 'You are not authorized to perform this action'
-//             });
-//         }
-//         user.hashed_password = undefined;
-//         user.salt = undefined;
-//         res.json(user);
-//     });
-// };
-
+// ----- UPDATE USER ----- //
 exports.update = (req, res) => {
-    // console.log('UPDATE USER - req.user', req.user, 'UPDATE DATA', req.body);
-    const { name, password } = req.body;
+    const { password, address } = req.body;
 
     User.findOne({ _id: req.profile._id }, (err, user) => {
+        /**
+         * jika user tidak ditemukan
+         */
         if (err || !user) {
             return res.status(400).json({
                 error: 'User not found'
             });
         }
-        if (!name) {
-            return res.status(400).json({
-                error: 'Name is required'
-            });
-        } else {
-            user.name = name;
-        }
 
         if (password) {
+            /**
+             * jika password tidak sesuai ketentuan
+             */
             if (password.length < 6) {
                 return res.status(400).json({
                     error: 'Password should be min 6 characters long'
                 });
             } else {
                 user.password = password;
+            }
+        }
+
+        if (address) {
+            /**
+             * jika address tidak sesuai ketentuan
+             */
+            if (address.length < 10) {
+                return res.status(400).json({
+                    error: 'Address should be informative. Type in your street information, house/room number, city, state, and postal code'
+                });
+            } else {
+                user.address = address;
             }
         }
 
@@ -77,13 +76,16 @@ exports.update = (req, res) => {
     });
 };
 
+// ----- ADDING ORDERS AS TRANSACTION HISTORY ----- //
 exports.addOrderToUserHistory = (req, res, next) => {
     let history = [];
     req.body.order.products.forEach(item => {
         history.push({
+            /**
+             * push informasi sebuah produk ke array history
+             */
             _id: item._id,
             name: item.name,
-            description: item.description,
             category: item.category,
             quantity: item.count,
             transaction_id: req.body.order.transaction_id,
@@ -92,6 +94,9 @@ exports.addOrderToUserHistory = (req, res, next) => {
     });
 
     User.findOneAndUpdate({ _id: req.profile._id }, { $push: { history: history } }, { new: true }, (error, data) => {
+        /**
+         * melakukan update untuk keterangan pembelanjaan
+         */
         if (error) {
             return res.status(400).json({
                 error: 'Could not update user purchase history'
@@ -101,6 +106,7 @@ exports.addOrderToUserHistory = (req, res, next) => {
     });
 };
 
+// ----- USER'S PURCHASE HISTORY ----- //
 exports.purchaseHistory = (req, res) => {
     Order.find({ user: req.profile._id })
         .populate('user', '_id name')
