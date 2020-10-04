@@ -45,27 +45,32 @@ const ManageProducts = () => {
                         Total {products.length} products
                     </h2>
                     <hr />
-                    <ul className="list-group">
+                    <div className="list-group">
                         {products.map((p, i) => (
-                            <li
+                            <div
                                 key={i}
                                 className="list-group-item d-flex justify-content-between align-items-center"
                             >
                                 <strong>{p.name}</strong>
+
+                                <div className="btn-group" role="group" aria-label="Basic example">
                                 <Link to={`/admin/product/update/${p._id}`}>
-                                    <span className="badge badge-warning badge-pill">
+                                    <button className="btn btn-warning">
                                         Update
-                                    </span>
+                                    </button>
                                 </Link>
-                                <span
+
+                                <button
                                     onClick={() => destroy(p._id)}
-                                    className="badge badge-danger badge-pill"
+                                    className="btn btn-danger"
                                 >
                                     Delete
-                                </span>
-                            </li>
+                                </button>
+                                </div>
+
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                     <br />
                 </div>
             </div>

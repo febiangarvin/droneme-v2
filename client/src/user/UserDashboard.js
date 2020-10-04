@@ -52,10 +52,10 @@ const Dashboard = () => {
             <div className="card mb-5">
                 <h3 className="card-header">User Information</h3>
                 <ul className="list-group">
-                    <li className="list-group-item">{name}</li>
-                    <li className="list-group-item">{email}</li>
+                <li className="list-group-item">Username: {name}</li>
+                    <li className="list-group-item">Email: {email}</li>
                     <li className="list-group-item">
-                        {role === 1 ? "Admin" : "Registered User"}
+                        Role: {role === 1 ? "Admin" : "Registered User"}
                     </li>
                 </ul>
             </div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
             description={`G'day ${name}!`}
             className="container-fluid"
         >
-            <div className="row">
+            <div className="row mb-5 mt-5">
                 <div className="col-3">{userLinks()}</div>
                 <div className="col-9">
                     {userInfo()}

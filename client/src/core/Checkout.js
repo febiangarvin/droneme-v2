@@ -80,11 +80,6 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                     amount: getTotal(products)
                 };
 
-                // //added this
-                if (deliveryAddress.length === 0) {
-                    console.log('Address should not be empty!')
-                }
-
                 processPayment(userId, token, paymentData)
                     .then(response => {
                         console.log(response);
@@ -95,7 +90,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                             products: products,
                             transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
-                            address: response.deliveryAddress
+                            address: deliveryAddress
                         };
 
                         createOrder(userId, token, createOrderData)
@@ -132,8 +127,6 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
                     <div className="gorm-group mb-3">
                         <label className="text-muted">Delivery address:</label>
                         <textarea
-                            // //added this
-                            required
                             onChange={handleAddress}
                             className="form-control"
                             value={data.address}
@@ -161,8 +154,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     // //edited this
     const showError = error => (
         <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
-            Please fill in all the required fileds!
-            {/* {error} */}
+            {/* Please fill in all the required fileds! */}
+            {error}
         </div>
     );
 

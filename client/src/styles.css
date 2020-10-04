@@ -74,6 +74,8 @@
      width: 30wh;
      height: 20vh;
      padding-bottom: 30vh;
+     margin-bottom: 0vh;
+     margin-top: -0.09vh;
      color: whitesmoke;
      background: linear-gradient(-45deg, #00c00a, #004e07, #006b00, #000000);
      background-size: 400% 400%;

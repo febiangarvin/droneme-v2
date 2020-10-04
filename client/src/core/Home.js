@@ -40,6 +40,7 @@ const Home = () => {
             description="Node React E-commerce App"
             className="container-fluid"
         >
+            <br/><br/>
             <Search />
             <h2 className="mb-4">New Arrivals</h2>
             <div className="row">
@@ -49,6 +50,7 @@ const Home = () => {
                     </div>
                 ))}
             </div>
+            <br/><br/>
 
             <h2 className="mb-4">Best Sellers</h2>
             <div className="row">
@@ -58,6 +60,7 @@ const Home = () => {
                     </div>
                 ))}
             </div>
+            <br/><br/>
         </Layout>
     );
 };

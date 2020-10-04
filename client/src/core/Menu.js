@@ -5,7 +5,7 @@ import { itemTotal } from "./cartHelpers";
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
-        return { color: "#ff9900" };
+        return { color: "green" };
     } else {
         return { color: "#ffffff" };
     }

@@ -18,7 +18,6 @@ exports.orderById = (req, res, next, id) => {
 
 // ----- CREATING ORDER ----- //
 exports.create = (req, res) => {
-    // console.log("CREATE ORDER: ", req.body);
     req.body.order.user = req.profile;
     const order = new Order(req.body.order);
     order.save((error, data) => {
@@ -26,12 +25,6 @@ exports.create = (req, res) => {
             return res.status(400).json({
                 error: errorHandler(error)
             });
-        }
-        const { address } = data
-        if (!address) {
-            return res.status(400).json({
-                error: "Address is required!"
-            })
         }
         res.json(data);
     });
