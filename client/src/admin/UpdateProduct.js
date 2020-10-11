@@ -113,7 +113,7 @@ const UpdateProduct = ({ match }) => {
     };
 
     const newPostForm = () => (
-        <form className="mb-3" onSubmit={clickSubmit}>
+        <form className="mb-5 mt-5" onSubmit={clickSubmit}>
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary">
@@ -184,7 +184,7 @@ const UpdateProduct = ({ match }) => {
     );
 
     const showSuccess = () => (
-        <div className="alert alert-info" style={{ display: createdProduct ? '' : 'none' }}>
+        <div className="alert alert-info mt-5" style={{ display: createdProduct ? '' : 'none' }}>
             <h2>{`${createdProduct}`} is updated!</h2>
         </div>
     );

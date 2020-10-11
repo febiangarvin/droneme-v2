@@ -34,7 +34,7 @@ const AddCategory = () => {
 
     const newCategoryFom = () => (
         <form onSubmit={clickSubmit}>
-            <div className="form-group">
+            <div className="form-group mt-5">
                 <label className="text-muted">Name</label>
                 <input
                     type="text"
@@ -51,13 +51,13 @@ const AddCategory = () => {
 
     const showSuccess = () => {
         if (success) {
-            return <h3 className="text-success">A new category is added</h3>;
+            return <h3 className="text-success mt-3">A new category is added</h3>;
         }
     };
 
     const showError = () => {
         if (error) {
-            return <h3 className="text-danger">Category should be unique</h3>;
+            return <h3 className="text-danger mt-3">Category should be unique</h3>;
         }
     };
 

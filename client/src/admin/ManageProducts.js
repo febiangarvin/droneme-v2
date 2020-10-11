@@ -41,11 +41,11 @@ const ManageProducts = () => {
         >
             <div className="row">
                 <div className="col-12">
-                    <h2 className="text-center">
+                    <h2 className="text-center mt-5">
                         Total {products.length} products
                     </h2>
                     <hr />
-                    <div className="list-group">
+                    <div className="list-group mb-5">
                         {products.map((p, i) => (
                             <div
                                 key={i}

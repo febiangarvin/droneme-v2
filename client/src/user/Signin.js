@@ -38,7 +38,7 @@ const Signin = () => {
 
     const signUpForm = () => (
         <form>
-            <div className="form-group">
+            <div className="form-group mt-5">
                 <label className="text-muted">Email</label>
                 <input
                     onChange={handleChange("email")}
@@ -65,7 +65,7 @@ const Signin = () => {
 
     const showError = () => (
         <div
-            className="alert alert-danger"
+            className="alert alert-danger mt-5"
             style={{ display: error ? "" : "none" }}
         >
             {error}
@@ -74,7 +74,7 @@ const Signin = () => {
 
     const showLoading = () =>
         loading && (
-            <div className="alert alert-info">
+            <div className="alert alert-info mt-5">
                 <h2>Loading...</h2>
             </div>
         );

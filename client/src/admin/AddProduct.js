@@ -92,7 +92,7 @@ const AddProduct = () => {
     };
 
     const newPostForm = () => (
-        <form className="mb-3" onSubmit={clickSubmit}>
+        <form className="mb-5 mt-5" onSubmit={clickSubmit}>
             <h4>Post Photo</h4>
             <div className="form-group">
                 <label className="btn btn-secondary">
@@ -198,7 +198,7 @@ const AddProduct = () => {
 
     const showError = () => (
         <div
-            className="alert alert-danger"
+            className="alert alert-danger mt-5"
             style={{ display: error ? "" : "none" }}
         >
             {error}
@@ -207,7 +207,7 @@ const AddProduct = () => {
 
     const showSuccess = () => (
         <div
-            className="alert alert-info"
+            className="alert alert-info mt-5"
             style={{ display: createdProduct ? "" : "none" }}
         >
             <h2>{`${createdProduct}`} is created!</h2>

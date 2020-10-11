@@ -98,7 +98,7 @@ const Orders = () => {
                 }, you can manage all the orders here`}
             className="container-fluid"
         >
-            <div className="row">
+            <div className="row mb-3">
                 <div className="col-md-8 offset-md-2">
                     {showOrdersLength()}
 
