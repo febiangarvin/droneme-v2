@@ -1,6 +1,6 @@
-/**
- * border radius
- */
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+
+/* border radius */
 
  .btn,
  .jumbotron,
@@ -120,3 +120,15 @@
      }
  }
  
+/* header logo */
+ .nav-logo {
+    color: #2DA100;
+    font-family: 'Righteous', cursive;
+    font-size: 20px;
+  }
+  
+  .nav-logo > img {
+    margin-right: 10px;
+    height : 55px; 
+    width : 60px;
+  }

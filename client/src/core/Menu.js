@@ -1,30 +1,39 @@
 import React, { Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
+import {ImEnter} from "react-icons/im"
+import { FaUserAstronaut, FaUserSecret, FaShoppingCart, FaUserPlus, FaSignOutAlt, FaRegEdit, FaPlane, FaCashRegister, FaShoppingBag } from "react-icons/fa"
+import Logo from '../assets/icons/logo.png'
+import "../styles.css";
+
 import { signout, isAuthenticated } from "../auth";
 import { itemTotal } from "./cartHelpers";
 
 const isActive = (history, path) => {
     if (history.location.pathname === path) {
-        return { color: "green" };
+        return { color: "#2DA100" };
     } else {
         return { color: "#ffffff" };
     }
 };
 
 const Menu = ({ history }) => (
-    <div>
-        <ul className="nav nav-tabs bg-dark">
+    <div className='bg-dark'>
+
+        <ul className="nav nav-tabs justify-content-between" style={{height:75}}>
             <li className="nav-item">
                 <Link
                     className="nav-link"
                     style={isActive(history, "/")}
                     to="/"
                 >
-                    Home
+                    <div className='nav-logo'>
+                        <img src={Logo} alt='logo' />
+                        droneME
+                    </div>
                 </Link>
             </li>
 
-            <li className="nav-item">
+            {/* <li className="nav-item">
                 <Link
                     className="nav-link"
                     style={isActive(history, "/shop")}
@@ -32,17 +41,18 @@ const Menu = ({ history }) => (
                 >
                     Shop
                 </Link>
-            </li>
+            </li> */}
 
+            <li className="nav mt-3 mr-3">
             <li className="nav-item">
                 <Link
                     className="nav-link"
                     style={isActive(history, "/cart")}
                     to="/cart"
                 >
-                    Cart{" "}
+                    <FaShoppingCart/>{" "}
                     <sup>
-                        <small className="cart-badge">{itemTotal()}</small>
+                        <small>{itemTotal()}</small>
                     </sup>
                 </Link>
             </li>
@@ -54,7 +64,7 @@ const Menu = ({ history }) => (
                         style={isActive(history, "/user/dashboard")}
                         to="/user/dashboard"
                     >
-                        Dashboard
+                        <FaUserAstronaut/>
                     </Link>
                 </li>
             )}
@@ -66,7 +76,7 @@ const Menu = ({ history }) => (
                         style={isActive(history, "/admin/dashboard")}
                         to="/admin/dashboard"
                     >
-                        Dashboard
+                        <FaUserSecret/>
                     </Link>
                 </li>
             )}
@@ -79,7 +89,7 @@ const Menu = ({ history }) => (
                             style={isActive(history, "/signin")}
                             to="/signin"
                         >
-                            Signin
+                            <ImEnter/>
                         </Link>
                     </li>
 
@@ -89,7 +99,7 @@ const Menu = ({ history }) => (
                             style={isActive(history, "/signup")}
                             to="/signup"
                         >
-                            Signup
+                            <FaUserPlus/>
                         </Link>
                     </li>
                 </Fragment>
@@ -106,10 +116,12 @@ const Menu = ({ history }) => (
                             })
                         }
                     >
-                        Signout
+                        <FaSignOutAlt/>
                     </span>
                 </li>
             )}
+            </li>
+
         </ul>
     </div>
 );

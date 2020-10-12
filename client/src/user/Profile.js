@@ -37,7 +37,7 @@ const Profile = ({ match }) => {
 
     const clickSubmit = e => {
         e.preventDefault();
-        update(match.params.userId, token, { name, email, password }).then(data => {
+        update(match.params.userId, token, {password }).then(data => {
             if (data.error) {
                 // console.log(data.error);
                 alert(data.error);
@@ -45,8 +45,6 @@ const Profile = ({ match }) => {
                 updateUser(data, () => {
                     setValues({
                         ...values,
-                        name: data.name,
-                        email: data.email,
                         success: true
                     });
                 });
@@ -63,19 +61,17 @@ const Profile = ({ match }) => {
     const profileUpdate = (name, email, password) => (
         <form>
             <div className="form-group">
-                <label className="text-muted">Name</label>
-                <input type="text" onChange={handleChange('name')} className="form-control" value={name} />
+                <label className="text-muted">Name: {name}</label>
             </div>
             <div className="form-group">
-                <label className="text-muted">Email</label>
-                <input type="email" onChange={handleChange('email')} className="form-control" value={email} />
+                <label className="text-muted">Email: {email}</label>
             </div>
             <div className="form-group">
-                <label className="text-muted">Password</label>
+                <label className="text-muted">Change Password</label>
                 <input type="password" onChange={handleChange('password')} className="form-control" value={password} />
             </div>
 
-            <button onClick={clickSubmit} className="btn btn-primary">
+            <button onClick={clickSubmit} className="btn btn-primary mb-5">
                 Submit
             </button>
         </form>
@@ -83,7 +79,7 @@ const Profile = ({ match }) => {
 
     return (
         <Layout title="Profile" description="Update your profile" className="container-fluid">
-            <h2 className="mb-4">Profile update</h2>
+            <h2 className="mb-4 mt-3">Profile Update</h2>
             {profileUpdate(name, email, password)}
             {redirectUser(success)}
         </Layout>

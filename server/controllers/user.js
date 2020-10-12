@@ -36,14 +36,6 @@ exports.update = (req, res) => {
             });
         }
 
-        if (!name) {
-            return res.status(400).json({
-                error: 'Name is required'
-            });
-        } else {
-            user.name = name;
-        }
-
         if (password) {
             /**
              * jika password tidak sesuai ketentuan
@@ -56,19 +48,6 @@ exports.update = (req, res) => {
                 user.password = password;
             }
         }
-
-        /**
-         * jika address tidak sesuai ketentuan
-         */
-        // if (address) {
-        //     if (address.length < 10) {
-        //         return res.status(400).json({
-        //             error: 'Address should be informative. Type in your street information, house/room number, city, state, and postal code'
-        //         });
-        //     } else {
-        //         user.address = address;
-        //     }
-        // }
 
         user.save((err, updatedUser) => {
             if (err) {
