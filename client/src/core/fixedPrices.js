@@ -22,36 +22,36 @@ export const prices = [
     {
         _id: 4,
         name: "$76 to $100",
-        array: [30, 39]
+        array: [76, 100]
     },
     {
         _id: 5,
-        name: "$101 to $125",
-        array: [101, 125]
+        name: "$101 to $250",
+        array: [101, 250]
     },
     {
         _id: 6,
-        name: "$126 to $150",
-        array: [126, 150]
+        name: "$251 to $500",
+        array: [251, 500]
     },
     {
         _id: 7,
-        name: "$151 to $175",
-        array: [151, 175]
+        name: "$501 to $750",
+        array: [501, 750]
     },
     {
         _id: 8,
-        name: "$176 to $200",
-        array: [176, 200]
+        name: "$751 to $1000",
+        array: [751, 1000]
     },
     {
         _id: 9,
-        name: "$201 to $500",
-        array: [201, 500]
+        name: "$1001 to $2000",
+        array: [1001, 2000]
     },
     {
         _id: 10,
-        name: "More than $500",
-        array: [501, 99999]
+        name: "More than $2000",
+        array: [2001, 99999]
     }
 ];

@@ -6,7 +6,7 @@ import Home from './core/Home';
 import PrivateRoute from './auth/PrivateRoute';
 import Dashboard from './user/UserDashboard';
 import AdminRoute from './auth/AdminRoute';
-import AdminDashboard from './user/AdminDashboard';
+import AdminDashboard from './admin/AdminDashboard';
 import AddCategory from './admin/AddCategory';
 import AddProduct from './admin/AddProduct';
 import Shop from './core/Shop';
@@ -17,6 +17,7 @@ import Profile from './user/Profile';
 import ManageProducts from './admin/ManageProducts';
 import UpdateProduct from './admin/UpdateProduct';
 import UpdateCategory from './admin/UpdateCategory';
+import ManageCategories from './admin/ManageCategories';
 
 const Routes = () => {
     return (
@@ -35,6 +36,7 @@ const Routes = () => {
                 <AdminRoute path="/admin/orders" exact component={Orders} />
                 <PrivateRoute path="/profile/:userId" exact component={Profile} />
                 <PrivateRoute path="/admin/products" exact component={ManageProducts} />
+                <PrivateRoute path="/admin/categories" exact component={ManageCategories} />
                 <AdminRoute path="/admin/product/update/:productId" exact component={UpdateProduct} />
                 <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory} />
             </Switch>
