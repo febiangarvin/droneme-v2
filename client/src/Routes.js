@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Signup from './user/Signup';
 import Signin from './user/Signin';
-import Home from './core/Home';
+import SearchPage from './core/SearchPage';
 import PrivateRoute from './auth/PrivateRoute';
 import Dashboard from './user/UserDashboard';
 import AdminRoute from './auth/AdminRoute';
@@ -18,15 +18,27 @@ import ManageProducts from './admin/ManageProducts';
 import UpdateProduct from './admin/UpdateProduct';
 import UpdateCategory from './admin/UpdateCategory';
 import ManageCategories from './admin/ManageCategories';
+import Home from './core/Home';
+import FlyaDrone from './core/FlyADrone';
+import AssembleaDrone from './core/AssembleADrone';
+import RepairaDrone from './core/RepairADrone';
+import NotFound from './core/NotFound';
+import Reviews from './core/Reviews';
 
 const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Home} />
+                <Route path='/' exact component={Home}/>
+                <Route path="/searchpage" exact component={SearchPage} />
                 <Route path="/shop" exact component={Shop} />
                 <Route path="/signin" exact component={Signin} />
                 <Route path="/signup" exact component={Signup} />
+                <Route path={'/flyadrone'} exact component={FlyaDrone} />
+                <Route path={'/assembleadrone'} exact component={AssembleaDrone} />
+                <Route path={'/repairadrone'} exact component={RepairaDrone} />
+                <Route path={'/reviews'} exact component={Reviews} />
+                {/* <Route path={'/*'} exact component={NotFound} /> */}
                 <PrivateRoute path="/user/dashboard" exact component={Dashboard} />
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
                 <AdminRoute path="/create/category" exact component={AddCategory} />

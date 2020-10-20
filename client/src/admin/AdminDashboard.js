@@ -60,8 +60,8 @@ const AdminDashboard = () => {
 
     return (
         <Layout
-            title="Dashboard"
-            description={`G'day ${name}!`}
+            title="Admin Dashboard"
+            description={`Hello, ${name}!`}
             className="container-fluid"
         >
             <div className="row mb-5 mt-5">
