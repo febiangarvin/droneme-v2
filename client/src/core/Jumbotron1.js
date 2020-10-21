@@ -10,7 +10,7 @@ const Jumbotron1 = () => {
             <div className="heading">
                 <div className="heading1">    
                     <h1>
-                        Search For:
+                        Explore: 
                         <ReactRotatingText items={[
                             ' DJI DRONES', 
                             ' THE NEW PHANTOM 4', 

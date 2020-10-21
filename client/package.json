@@ -19,7 +19,8 @@
     "react-icons": "^3.11.0",
     "react-rotating-text": "^1.4.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^3.4.4",
+    "react-twitter-embed": "^3.0.3",
     "react-typing-effect": "^2.0.4"
   },
   "scripts": {

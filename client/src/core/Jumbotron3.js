@@ -8,7 +8,7 @@ const Jumbotron3 = () => {
         <div className="jumbotron3 darken-overlay2">
             <div className="heading">
                 <div className="heading2">
-                    <h1>Why Us?</h1>
+                    <a href='/reviews'>Why Us?</a>
                     <div className="benefit">
                     <img src={lifetime} alt=''/>
                         <p>We guarantee that our products are reliable and tested before shipment.

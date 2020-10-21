@@ -10,7 +10,7 @@ const Reviews = () =>{
             <div>
                 <Menu />
                 <div className="reviews">
-                    <h2>Here what our customers have to say</h2>
+                    <h2>Hear what our customers have to say</h2>
                     <br /><br />
                     <div class="reviews-item">
                         <div class="reviews-picture">
@@ -23,7 +23,7 @@ const Reviews = () =>{
                                 Dele
                             </p>
                             <p class="sub-title">
-                                Head of Import of AROI
+                                Head of Import of PT Suka Terbang
                             </p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ const Reviews = () =>{
                                 Kane
                             </p>
                             <p class="sub-title">
-                                Head of Technology at BNPB Indonesia
+                                Head of Technology at PT Pertanian Cerdas Indonesia
                             </p>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ const Reviews = () =>{
                                 Hugo
                             </p>
                             <p class="sub-title">
-                                CTO at LAPAN Indonesia
+                                CTO at Mekanik Indonesia
                             </p>
                         </div>
                     </div>
@@ -86,7 +86,7 @@ const Reviews = () =>{
                                 Heung
                             </p>
                             <p class="sub-title">
-                                Manager of Drone Racing League Event in Singapore
+                                Manager of Drone Racing League Event in Cirendeu
                             </p>
                         </div>
                     </div>

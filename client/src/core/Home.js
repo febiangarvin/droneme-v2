@@ -4,6 +4,7 @@ import Jumbotron1 from "./Jumbotron1";
 import Jumbotron2 from "./Jumbotron2";
 import Jumbotron3 from "./Jumbotron3";
 import Jumbotron4 from "./Jumbotron4";
+import Footer from "./Footer";
 
 const Home = () => {
     return(
@@ -13,6 +14,7 @@ const Home = () => {
             <Jumbotron2/>
             <Jumbotron3/>
             <Jumbotron4/>
+            <Footer/>
         </Fragment>
     )
 }
