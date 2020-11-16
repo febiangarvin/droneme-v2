@@ -22,8 +22,7 @@ import Home from './core/Home';
 import FlyaDrone from './core/FlyADrone';
 import AssembleaDrone from './core/AssembleADrone';
 import RepairaDrone from './core/RepairADrone';
-import NotFound from './core/NotFound';
-import Reviews from './core/Reviews';
+import Disclaimer from './core/Disclaimer';
 
 const Routes = () => {
     return (
@@ -37,8 +36,7 @@ const Routes = () => {
                 <Route path={'/flyadrone'} exact component={FlyaDrone} />
                 <Route path={'/assembleadrone'} exact component={AssembleaDrone} />
                 <Route path={'/repairadrone'} exact component={RepairaDrone} />
-                <Route path={'/reviews'} exact component={Reviews} />
-                {/* <Route path={'/*'} exact component={NotFound} /> */}
+                <Route path={'/disclaimer'} exact component={Disclaimer} />
                 <PrivateRoute path="/user/dashboard" exact component={Dashboard} />
                 <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
                 <AdminRoute path="/create/category" exact component={AddCategory} />

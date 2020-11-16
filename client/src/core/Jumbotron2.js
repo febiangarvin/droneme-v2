@@ -6,8 +6,8 @@ import { FaShoppingBasket } from "react-icons/fa";
 const Jumbotron2 = () => {
     return(
         <div className='jumbotron2'>
-            <div className="row">
-                <div className="col-md-6 produk">
+            <div className="row mr-0">
+                <div className="col-6 produk">
                     <img className='d-block w-100 produk-img' src={product1} alt='drone' />
                     <div className="produk-caption">
                         <h2><span>Shop The Latest Drones</span></h2>
@@ -17,7 +17,7 @@ const Jumbotron2 = () => {
                         <a href='/shop' className="btn-big">Shop Drones <FaShoppingBasket /></a>
                     </div>
                 </div>
-                <div className="col-md-6 produk">
+                <div className="col-6 produk">
                     <img className='d-block w-100 produk-img' src={product2} alt='goggles' />
                     <div className="produk-caption">
                         <h2><span>Shop The Latest Accessories</span></h2>
